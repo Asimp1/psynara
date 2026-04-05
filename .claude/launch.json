@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Static File Server",
+      "runtimeExecutable": "/usr/bin/ruby",
+      "runtimeArgs": ["/tmp/psynara-serve.rb"],
+      "port": 3000
+    }
+  ]
+}
