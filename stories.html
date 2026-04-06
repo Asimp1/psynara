@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stories, Psynara</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#303D35;--olive:#697455;--terracotta:#743D22;--beige:#C6BCAE;
+  --charcoal:#3D3030;--warm-grey:#949997;--black:#272727;--white:#FFFFFF;
+  --cream:#F5F2EE;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--black);overflow-x:hidden;font-weight:300}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;transition:background 0.4s}
+nav.scrolled{background:rgba(48,61,53,0.93);backdrop-filter:blur(12px)}
+.nav-logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
+.nav-logo img{height:28px;width:auto;filter:brightness(0) invert(1)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--beige)}
+.nav-cta{font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--white);border:0.5px solid rgba(255,255,255,0.5);padding:0.6rem 1.4rem;text-decoration:none;transition:all 0.3s}
+.nav-cta:hover{background:var(--white);color:var(--forest)}
+
+/* ── HERO ── */
+.page-hero{position:relative;height:70vh;min-height:520px;display:flex;align-items:flex-end;overflow:hidden;background:var(--charcoal)}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(30,38,33,0.15) 0%,rgba(30,38,33,0.82) 100%)}
+.page-hero-content{position:relative;z-index:2;padding:0 3rem 5rem;max-width:800px}
+.page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--beige);margin-bottom:1rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.2s forwards}
+.page-hero-title{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:300;line-height:1.1;color:var(--white);opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.4s forwards}
+.page-hero-title em{font-style:italic}
+
+/* ── HOLDING ── */
+.holding{background:var(--white);padding:8rem 3rem}
+.holding-inner{max-width:640px;margin:0 auto;text-align:center}
+.holding-label{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:2rem}
+.holding-heading{font-family:var(--serif);font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:300;color:var(--forest);line-height:1.35;margin-bottom:1.5rem}
+.holding-heading em{font-style:italic}
+.holding-body{font-size:0.9rem;line-height:1.9;color:var(--charcoal);opacity:0.6;max-width:480px;margin:0 auto 3rem}
+.divider{width:40px;height:0.5px;background:var(--beige);margin:2.5rem auto}
+
+/* Notify form */
+.notify-form{display:flex;gap:0;max-width:400px;margin:0 auto 3rem}
+.notify-input{flex:1;font-family:var(--sans);font-size:0.8rem;font-weight:300;padding:0.8rem 1.2rem;border:0.5px solid rgba(61,48,48,0.2);background:var(--cream);color:var(--black);outline:none;transition:border-color 0.2s}
+.notify-input::placeholder{color:var(--warm-grey)}
+.notify-input:focus{border-color:var(--forest)}
+.notify-btn{font-family:var(--sans);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.8rem 1.4rem;background:var(--forest);color:var(--white);border:none;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+.notify-btn:hover{background:var(--olive)}
+.notify-success{display:none;font-size:0.82rem;color:var(--olive);letter-spacing:0.06em;margin-top:1rem}
+
+.holding-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.holding-link{font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--terracotta);text-decoration:none;border-bottom:0.5px solid currentColor;padding-bottom:0.2rem;transition:opacity 0.2s}
+.holding-link:hover{opacity:0.7}
+
+/* ── PREVIEW STRIP ── */
+.preview{background:var(--cream);padding:7rem 3rem}
+.preview-inner{max-width:1100px;margin:0 auto}
+.preview-label{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:1rem;text-align:center}
+.preview-heading{font-family:var(--serif);font-size:clamp(1.6rem,2.2vw,2.2rem);font-weight:300;color:var(--forest);text-align:center;margin-bottom:3.5rem}
+.preview-heading em{font-style:italic}
+.preview-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--beige)}
+.preview-card{background:var(--cream);padding:2.5rem 2rem}
+.preview-card-type{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--terracotta);margin-bottom:1rem;opacity:0.8}
+.preview-card-title{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--forest);line-height:1.3;margin-bottom:0.8rem}
+.preview-card-title em{font-style:italic}
+.preview-card-body{font-size:0.8rem;line-height:1.75;color:var(--warm-grey)}
+.preview-card-tag{display:inline-block;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive);border:0.5px solid rgba(105,116,85,0.35);padding:0.25rem 0.6rem;margin-top:1.2rem}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px solid rgba(198,188,174,0.1)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3rem;padding-bottom:3rem;border-bottom:0.5px solid rgba(198,188,174,0.15)}
+.footer-tagline{font-family:var(--serif);font-size:0.9rem;font-style:italic;color:rgba(255,255,255,0.35);margin-top:0.8rem}
+.footer-nav{display:flex;gap:2rem;list-style:none}
+.footer-nav a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.footer-nav a:hover{color:var(--beige)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{font-size:0.72rem;color:rgba(255,255,255,0.25);text-decoration:none}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="wisdom-knot-stone.png" alt="Psynara Wisdom Knot" style="height:36px;width:auto;filter:brightness(0) invert(1);margin-right:0.5rem;">
+    <img src="wisdom-knot-stone.png" alt="Psynara" style="display:none">
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="experience.html">The Experience</a></li>
+    <li><a href="stories.html" class="active">Stories</a></li>
+  </ul>
+  <a href="/enquire" class="nav-cta">Begin Your Enquiry</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="page-eyebrow">Psynara Stories</p>
+    <h1 class="page-hero-title">Real people.<br><em>Real transformation.</em></h1>
+  </div>
+</section>
+
+<!-- HOLDING -->
+<section class="holding">
+  <div class="holding-inner fade-up">
+    <p class="holding-label">Coming Soon</p>
+    <h2 class="holding-heading">The stories that matter most<br>are the ones <em>you cannot yet tell.</em></h2>
+    <div class="divider"></div>
+    <p class="holding-body">We are curating a collection of honest, human accounts from people who have walked through a Psynara retreat. Their words, in their own time, when they are ready to share them.</p>
+    <p class="holding-body" style="margin-top:-1.5rem">Be the first to know when Stories launches.</p>
+    <form class="notify-form" onsubmit="handleNotify(event)">
+      <input type="email" class="notify-input" placeholder="Your email address" required>
+      <button type="submit" class="notify-btn">Notify Me</button>
+    </form>
+    <p class="notify-success" id="notify-success">Thank you. We will be in touch.</p>
+    <div class="holding-links">
+      <a href="experience.html" class="holding-link">The Experience &#8594;</a>
+      <a href="retreats.html" class="holding-link">Our Retreats &#8594;</a>
+      <a href="/enquire" class="holding-link">Begin Your Enquiry &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW: What stories will cover -->
+<section class="preview">
+  <div class="preview-inner">
+    <p class="preview-label fade-up">What to expect</p>
+    <h2 class="preview-heading fade-up">Stories of <em>courage, clarity, and change.</em></h2>
+    <div class="preview-cards">
+      <div class="preview-card fade-up">
+        <p class="preview-card-type">Individual</p>
+        <h3 class="preview-card-title">Healing what weekly therapy<br><em>could not reach</em></h3>
+        <p class="preview-card-body">Accounts from individuals who found in the retreat format something they had not been able to access in traditional therapy settings.</p>
+        <span class="preview-card-tag">Trauma</span>
+      </div>
+      <div class="preview-card fade-up">
+        <p class="preview-card-type">Couples</p>
+        <h3 class="preview-card-title">Finding each other<br><em>again</em></h3>
+        <p class="preview-card-body">Couples who arrived uncertain and left with something rebuilt, renewed, or honestly understood for the first time.</p>
+        <span class="preview-card-tag">Reconnection</span>
+      </div>
+      <div class="preview-card fade-up">
+        <p class="preview-card-type">Individual</p>
+        <h3 class="preview-card-title">The moment everything<br><em>began to shift</em></h3>
+        <p class="preview-card-body">Personal reflections on what it feels like to step away from daily life and into a process built entirely around you.</p>
+        <span class="preview-card-tag">Transformation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="footer-tagline">Where the mind meets the whole.</p>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="about.html">About</a></li>
+      <li><a href="retreats.html">Retreats</a></li>
+      <li><a href="experience.html">The Experience</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="/enquire">Enquire</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2025 Psynara. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+function handleNotify(e) {
+  e.preventDefault();
+  e.target.style.display = 'none';
+  document.getElementById('notify-success').style.display = 'block';
+}
+</script>
+</body>
+</html>
