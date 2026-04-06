@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Experience, Psynara</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#303D35;--olive:#697455;--terracotta:#743D22;--beige:#C6BCAE;
+  --charcoal:#3D3030;--warm-grey:#949997;--black:#272727;--white:#FFFFFF;
+  --cream:#F5F2EE;--mist:#CBD8D5;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--black);overflow-x:hidden;font-weight:300}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;transition:background 0.4s}
+nav.scrolled{background:rgba(48,61,53,0.93);backdrop-filter:blur(12px)}
+.nav-logo img{height:28px;filter:brightness(0) invert(1)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--beige)}
+.nav-cta{font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--white);border:0.5px solid rgba(255,255,255,0.5);padding:0.6rem 1.4rem;text-decoration:none;transition:all 0.3s}
+.nav-cta:hover{background:var(--white);color:var(--forest)}
+
+/* ── HERO ── */
+.page-hero{position:relative;height:70vh;min-height:520px;display:flex;align-items:flex-end;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background:var(--forest)}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(30,38,33,0.3) 0%,rgba(30,38,33,0.75) 100%)}
+.page-hero-content{position:relative;z-index:2;padding:0 3rem 5rem;max-width:800px}
+.page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--beige);margin-bottom:1rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.2s forwards}
+.page-hero-title{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:1.5rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.4s forwards}
+.page-hero-title em{font-style:italic}
+.page-hero-sub{font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.65);max-width:560px;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.6s forwards}
+
+/* ── OPENING STATEMENT ── */
+.opening{background:var(--white);padding:6rem 3rem}
+.opening-inner{max-width:760px;margin:0 auto;text-align:center}
+.opening-pull{font-family:var(--serif);font-size:clamp(1.5rem,2.2vw,2rem);font-weight:300;line-height:1.5;color:var(--forest);margin-bottom:1.8rem}
+.opening-pull em{font-style:italic}
+.opening-body{font-size:0.92rem;line-height:1.95;color:var(--charcoal);opacity:0.7}
+.divider-line{width:40px;height:0.5px;background:var(--beige);margin:2.5rem auto}
+
+/* ── JOURNEY (5 STEPS) ── */
+.journey{background:var(--cream);padding:7rem 3rem}
+.journey-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:1rem}
+.section-heading{font-family:var(--serif);font-size:clamp(2rem,2.8vw,2.8rem);font-weight:300;line-height:1.2;color:var(--forest);margin-bottom:0.8rem}
+.section-heading em{font-style:italic}
+.section-intro{font-size:0.9rem;line-height:1.9;color:var(--charcoal);opacity:0.65;max-width:620px;margin-bottom:4rem}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5px;background:var(--beige)}
+.step{background:var(--cream);padding:2.5rem 1.8rem;position:relative}
+.step-num{font-family:var(--serif);font-size:3rem;font-weight:300;line-height:1;color:rgba(48,61,53,0.1);margin-bottom:0.8rem}
+.step-title{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--forest);margin-bottom:0.8rem;line-height:1.3}
+.step-title em{font-style:italic}
+.step-body{font-size:0.8rem;line-height:1.8;color:var(--warm-grey)}
+.step-bar{width:24px;height:1.5px;background:var(--terracotta);margin-bottom:1.2rem;opacity:0.6}
+
+/* ── A DAY AT PSYNARA ── */
+.day{background:var(--forest);padding:7rem 3rem}
+.day-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.day-left .section-label{color:var(--olive)}
+.day-left .section-heading{color:var(--white)}
+.day-left .section-heading em{color:var(--beige)}
+.day-intro{font-size:0.88rem;line-height:1.9;color:rgba(255,255,255,0.55);margin-top:1rem;margin-bottom:0;max-width:420px}
+.day-note{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--beige);opacity:0.7;border-left:1px solid rgba(198,188,174,0.3);padding-left:1.2rem;margin-top:2rem;line-height:1.7}
+.day-schedule{display:flex;flex-direction:column;gap:0;margin-top:2rem}
+.time-block{border-top:0.5px solid rgba(198,188,174,0.15);padding:1.8rem 0}
+.time-block:last-child{border-bottom:0.5px solid rgba(198,188,174,0.15)}
+.time-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--beige);opacity:0.6;margin-bottom:0.7rem}
+.time-items{display:flex;flex-direction:column;gap:0.4rem}
+.time-item{font-size:0.85rem;line-height:1.6;color:rgba(255,255,255,0.65);padding-left:0.8rem;position:relative}
+.time-item::before{content:'';position:absolute;left:0;top:0.6em;width:3px;height:3px;border-radius:50%;background:var(--olive);opacity:0.7}
+.day-closing{font-family:var(--serif);font-size:1.05rem;font-style:italic;color:rgba(255,255,255,0.45);margin-top:2.5rem;line-height:1.7;grid-column:1/-1;text-align:center;border-top:0.5px solid rgba(198,188,174,0.1);padding-top:2.5rem}
+
+/* ── METHODOLOGY ── */
+.methodology{background:var(--white);padding:7rem 3rem}
+.methodology-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.meth-body{font-size:0.9rem;line-height:1.95;color:var(--charcoal);opacity:0.7;margin:1.5rem 0}
+.meth-body p+p{margin-top:1rem}
+.meth-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin:2rem 0}
+.meth-tag{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive);border:0.5px solid rgba(105,116,85,0.35);padding:0.35rem 0.8rem}
+.meth-link{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--terracotta);text-decoration:none;border-bottom:0.5px solid currentColor;padding-bottom:0.2rem;margin-top:0.5rem;transition:opacity 0.2s}
+.meth-link:hover{opacity:0.7}
+.meth-visual{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--beige)}
+.meth-cell{background:var(--white);padding:2rem 1.5rem}
+.meth-cell-num{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:rgba(48,61,53,0.12);line-height:1;margin-bottom:0.5rem}
+.meth-cell-name{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--forest);margin-bottom:0.4rem}
+.meth-cell-desc{font-size:0.75rem;line-height:1.7;color:var(--warm-grey)}
+
+/* ── THERAPISTS ── */
+.therapists{background:var(--cream);padding:7rem 3rem}
+.therapists-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.therapists-visual{position:relative;background:var(--beige)}
+.therapists-img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.therapists-bar{background:var(--forest);padding:1.2rem 1.5rem}
+.therapists-bar-text{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55)}
+.therapists-right .section-heading{margin-bottom:1.5rem}
+.therapists-body{font-size:0.9rem;line-height:1.95;color:var(--charcoal);opacity:0.7;margin-bottom:2rem}
+.trust-points{display:flex;flex-direction:column;gap:1rem}
+.trust-point{display:flex;align-items:flex-start;gap:1rem}
+.trust-icon{width:16px;height:16px;flex-shrink:0;margin-top:0.1rem;color:var(--olive);opacity:0.8}
+.trust-text{font-size:0.85rem;line-height:1.7;color:var(--charcoal);opacity:0.7}
+.trust-note{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--forest);opacity:0.6;margin-top:2rem;line-height:1.7}
+
+/* ── LOCATIONS ── */
+.locations{background:var(--charcoal);padding:7rem 3rem}
+.locations-inner{max-width:1100px;margin:0 auto}
+.locations-top{text-align:center;max-width:620px;margin:0 auto 4rem}
+.locations-top .section-label{color:var(--olive)}
+.locations-top .section-heading{color:var(--white)}
+.locations-top .section-heading em{color:var(--beige)}
+.locations-sub{font-size:0.9rem;line-height:1.9;color:rgba(255,255,255,0.45);margin-top:1rem}
+.loc-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(198,188,174,0.1)}
+.loc-pillar{background:var(--charcoal);padding:2.5rem 2rem;text-align:center}
+.loc-pillar-icon{width:32px;height:32px;margin:0 auto 1.2rem;color:var(--beige);opacity:0.45}
+.loc-pillar-name{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--white);margin-bottom:0.5rem}
+.loc-pillar-desc{font-size:0.78rem;line-height:1.7;color:rgba(255,255,255,0.4)}
+.loc-note{text-align:center;margin-top:3.5rem;font-family:var(--serif);font-size:1.05rem;font-style:italic;color:rgba(255,255,255,0.35);line-height:1.8}
+
+/* ── WHO IT'S FOR ── */
+.who{background:var(--cream);padding:7rem 3rem}
+.who-inner{max-width:1100px;margin:0 auto}
+.who-top{max-width:680px;margin-bottom:4rem}
+.who-top .section-heading{margin-bottom:1rem}
+.why-intensive{background:var(--white);border-left:2px solid var(--terracotta);padding:2rem 2.5rem;margin:2rem 0 3.5rem;max-width:680px}
+.why-intensive-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:0.8rem}
+.why-intensive-text{font-family:var(--serif);font-size:1.05rem;font-weight:300;line-height:1.7;color:var(--forest)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.who-group{border-top:1px solid var(--beige);padding-top:1.8rem}
+.who-group-title{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--forest);margin-bottom:1.2rem}
+.who-list{display:flex;flex-direction:column;gap:0.75rem}
+.who-item{font-size:0.83rem;line-height:1.7;color:var(--warm-grey);padding-left:0.9rem;position:relative}
+.who-item::before{content:'';position:absolute;left:0;top:0.55em;width:3px;height:3px;border-radius:50%;background:var(--olive);opacity:0.7}
+.who-footer{margin-top:3rem;font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--charcoal);opacity:0.55;max-width:640px;line-height:1.7}
+
+/* ── PRACTICALITIES ── */
+.practicalities{background:var(--white);padding:7rem 3rem}
+.prac-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--beige)}
+.prac-block{background:var(--white);padding:3.5rem 3rem}
+.prac-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:1.2rem}
+.prac-heading{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--forest);margin-bottom:1.2rem}
+.prac-body{font-size:0.88rem;line-height:1.9;color:var(--charcoal);opacity:0.65;margin-bottom:1.5rem}
+.prac-list{display:flex;flex-direction:column;gap:0.6rem}
+.prac-item{font-size:0.85rem;line-height:1.65;color:var(--charcoal);opacity:0.7;padding-left:1rem;position:relative}
+.prac-item::before{content:'—';position:absolute;left:0;color:var(--beige);font-size:0.8rem}
+
+/* ── INTEGRATION ── */
+.integration{background:var(--forest);padding:7rem 3rem}
+.integration-inner{max-width:760px;margin:0 auto;text-align:center}
+.integration .section-label{color:var(--olive);text-align:center;margin-bottom:1.5rem}
+.integration-heading{font-family:var(--serif);font-size:clamp(2rem,3vw,3rem);font-weight:300;line-height:1.2;color:var(--white);margin-bottom:2rem}
+.integration-heading em{font-style:italic;color:var(--beige)}
+.integration-body{font-size:0.9rem;line-height:1.95;color:rgba(255,255,255,0.55);margin-bottom:1.5rem}
+.integration-pull{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--beige);opacity:0.75;margin:2rem 0}
+
+/* ── CTA ── */
+.exp-cta{position:relative;padding:7rem 3rem;text-align:center;overflow:hidden;background:var(--charcoal)}
+.exp-cta-inner{position:relative;z-index:2}
+.cta-eyebrow{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--beige);opacity:0.75;margin-bottom:1.4rem}
+.cta-heading{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.2;color:var(--white);margin-bottom:2.2rem}
+.cta-heading em{font-style:italic}
+.cta-btn{display:inline-block;font-size:0.74rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--white);border:0.5px solid rgba(255,255,255,0.45);padding:0.85rem 2rem;text-decoration:none;transition:all 0.3s;margin:0 0.5rem}
+.cta-btn:hover{background:var(--white);color:var(--forest)}
+.cta-btn.filled{background:rgba(255,255,255,0.08)}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px solid rgba(198,188,174,0.1)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3rem;padding-bottom:3rem;border-bottom:0.5px solid rgba(198,188,174,0.15)}
+.footer-tagline{font-family:var(--serif);font-size:0.9rem;font-style:italic;color:rgba(255,255,255,0.35);margin-top:0.8rem}
+.footer-nav{display:flex;gap:2rem;list-style:none}
+.footer-nav a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.footer-nav a:hover{color:var(--beige)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{font-size:0.72rem;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.2s}
+.footer-legal a:hover{color:rgba(255,255,255,0.5)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="experience.html" class="active">The Experience</a></li>
+    <li><a href="/stories">Stories</a></li>
+  </ul>
+  <a href="/enquire" class="nav-cta">Begin Your Enquiry</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="page-eyebrow">The Psynara Experience</p>
+    <h1 class="page-hero-title">Transformation is not<br>left to <em>chance.</em></h1>
+    <p class="page-hero-sub">Every element of your journey is intentionally designed, clinically grounded, deeply personal, and delivered within an environment of privacy, luxury, and care.</p>
+  </div>
+</section>
+
+<!-- OPENING STATEMENT -->
+<section class="opening">
+  <div class="opening-inner fade-up">
+    <p class="opening-pull">This is not a retreat you attend.<br><em>It is a therapeutic journey created exclusively for you.</em></p>
+    <div class="divider-line"></div>
+    <p class="opening-body">At Psynara, transformation is not left to chance. Every element of your experience — from the moment of first contact to the weeks that follow your return home — is held with intention, care, and clinical precision.</p>
+  </div>
+</section>
+
+<!-- YOUR JOURNEY -->
+<section class="journey">
+  <div class="journey-inner">
+    <div class="fade-up">
+      <p class="section-label">Your Journey With Us</p>
+      <h2 class="section-heading">A carefully supported<br><em>process from start to finish.</em></h2>
+      <p class="section-intro">Every Psynara experience follows a structured admissions process. This ensures that each journey remains deeply personal, clinically appropriate, and tailored to your individual needs. From the first conversation to your return home, we guide you through a process designed for depth, safety, and meaningful transformation.</p>
+    </div>
+    <div class="steps fade-up">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-bar"></div>
+        <div class="step-title">Initial <em>Consultation</em></div>
+        <div class="step-body">We begin with a private consultation with a Psynara clinician to understand your story, goals, and what you are seeking from the experience.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-bar"></div>
+        <div class="step-title">Bespoke Programme <em>Design</em></div>
+        <div class="step-body">Your therapeutic programme is carefully designed using evidence-based approaches tailored specifically to your needs, pace, and emotional readiness.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-bar"></div>
+        <div class="step-title">Pre-Arrival <em>Preparation</em></div>
+        <div class="step-body">You receive guidance, reflective exercises, and practical information to help you arrive grounded and ready for meaningful work.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-bar"></div>
+        <div class="step-title">Your Retreat <em>Experience</em></div>
+        <div class="step-body">Over several days, you engage in structured therapy sessions, restorative practices, and carefully curated moments for reflection and integration.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-bar"></div>
+        <div class="step-title">Integration &amp; Continued <em>Support</em></div>
+        <div class="step-body">Transformation continues beyond the retreat. We provide follow-up sessions and support to help embed change into your daily life.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A DAY AT PSYNARA -->
+<section class="day">
+  <div class="day-inner">
+    <div class="day-left fade-up">
+      <p class="section-label">A Day at Psynara</p>
+      <h2 class="section-heading">Purposeful, spacious,<br><em>deeply supportive.</em></h2>
+      <p class="day-intro">Each day is thoughtfully structured to balance deep therapeutic work with rest, reflection, and restoration.</p>
+      <blockquote class="day-note">Full itineraries are provided in advance of each retreat and are developed individually. Optional elements are included to ensure the programme aligns with your needs, pace, and therapeutic goals.</blockquote>
+    </div>
+    <div class="day-schedule fade-up">
+      <div class="time-block">
+        <div class="time-label">Morning</div>
+        <div class="time-items">
+          <div class="time-item">Gentle start with mindfulness, breathwork, or grounding practice</div>
+          <div class="time-item">Therapeutic session with your dedicated clinician</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-label">Midday</div>
+        <div class="time-items">
+          <div class="time-item">Nourishing meals prepared to support wellbeing</div>
+          <div class="time-item">Time for rest, nature, or personal reflection</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-label">Afternoon</div>
+        <div class="time-items">
+          <div class="time-item">Focused therapeutic work or guided experiential sessions</div>
+          <div class="time-item">Somatic or integrative practices</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="time-label">Evening</div>
+        <div class="time-items">
+          <div class="time-item">Light reflective practice or guided integration</div>
+          <div class="time-item">Quiet time to absorb the day's insights</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="day-inner" style="display:block;max-width:1100px;margin:0 auto;">
+    <p class="day-closing fade-up">The rhythm is purposeful, structured yet spacious, intensive yet supportive.</p>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="methodology">
+  <div class="methodology-inner">
+    <div class="fade-up">
+      <p class="section-label">The Psynara Methodology</p>
+      <h2 class="section-heading">Clinical excellence meets<br><em>restorative experience.</em></h2>
+      <div class="meth-body">
+        <p>Psynara combines evidence-based psychological therapies with holistic practices designed to support deep and lasting change — working at emotional, cognitive, and nervous system levels.</p>
+        <p>Each programme is tailored to the individual, drawing on a carefully considered blend of approaches that are clinically appropriate, personally resonant, and purposefully integrated.</p>
+      </div>
+      <div class="meth-tags">
+        <span class="meth-tag">EMDR</span>
+        <span class="meth-tag">Schema Therapy</span>
+        <span class="meth-tag">Gottman Method</span>
+        <span class="meth-tag">EFT</span>
+        <span class="meth-tag">Discernment Counselling</span>
+        <span class="meth-tag">Somatic Work</span>
+        <span class="meth-tag">Mindfulness</span>
+        <span class="meth-tag">Breathwork</span>
+      </div>
+      <a href="methodology.html" class="meth-link">Explore Our Methodology &#8594;</a>
+    </div>
+    <div class="meth-visual fade-up">
+      <div class="meth-cell">
+        <div class="meth-cell-num">01</div>
+        <div class="meth-cell-name">Evidence-Based</div>
+        <div class="meth-cell-desc">Every therapeutic approach is grounded in clinical research and proven outcomes.</div>
+      </div>
+      <div class="meth-cell">
+        <div class="meth-cell-num">02</div>
+        <div class="meth-cell-name">Holistic</div>
+        <div class="meth-cell-desc">We work with the whole person — mind, body, and emotional landscape.</div>
+      </div>
+      <div class="meth-cell">
+        <div class="meth-cell-num">03</div>
+        <div class="meth-cell-name">Bespoke</div>
+        <div class="meth-cell-desc">No two programmes are alike. Everything is tailored to your individual needs.</div>
+      </div>
+      <div class="meth-cell">
+        <div class="meth-cell-num">04</div>
+        <div class="meth-cell-name">Integrative</div>
+        <div class="meth-cell-desc">Approaches are woven together thoughtfully, not applied in isolation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUR THERAPISTS -->
+<section class="therapists">
+  <div class="therapists-inner">
+    <div class="therapists-visual fade-up">
+      <div class="therapists-bar">
+        <div class="therapists-bar-text">Psynara Clinicians — Fully Licensed &amp; Qualified</div>
+      </div>
+    </div>
+    <div class="therapists-right">
+      <p class="section-label fade-up">Your Therapists</p>
+      <h2 class="section-heading fade-up">Led by those who understand<br><em>what real healing requires.</em></h2>
+      <p class="therapists-body fade-up">Psynara retreats are led by highly experienced psychologists and therapists. Trust and safety are the foundation of meaningful transformation, and we take both seriously.</p>
+      <div class="trust-points fade-up">
+        <div class="trust-point">
+          <svg class="trust-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="trust-text">Fully qualified and licensed in their respective fields</span>
+        </div>
+        <div class="trust-point">
+          <svg class="trust-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="trust-text">Specialists in trauma, relationships, and emotional healing</span>
+        </div>
+        <div class="trust-point">
+          <svg class="trust-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="trust-text">Combining clinical expertise with compassionate presence</span>
+        </div>
+        <div class="trust-point">
+          <svg class="trust-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="trust-text">Working collaboratively to tailor every aspect of your experience</span>
+        </div>
+      </div>
+      <p class="trust-note fade-up">Every clinician is chosen not only for their expertise, but for their ability to create the safety that real transformation requires.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations">
+  <div class="locations-inner">
+    <div class="locations-top fade-up">
+      <p class="section-label">Our Locations</p>
+      <h2 class="section-heading">Settings chosen for their<br><em>capacity to support deep healing.</em></h2>
+      <p class="locations-sub">Psynara experiences take place in carefully selected luxury settings designed for privacy, calm, and deep work. The environment itself becomes part of the healing process.</p>
+    </div>
+    <div class="loc-pillars fade-up">
+      <div class="loc-pillar">
+        <svg class="loc-pillar-icon" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18M3.75 3h16.5M4.5 3v18M19.5 3v18"/></svg>
+        <div class="loc-pillar-name">Natural Beauty</div>
+        <div class="loc-pillar-desc">Surrounded by landscapes chosen for their capacity to calm and restore</div>
+      </div>
+      <div class="loc-pillar">
+        <svg class="loc-pillar-icon" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+        <div class="loc-pillar-name">Complete Privacy</div>
+        <div class="loc-pillar-desc">Full discretion and confidentiality at every location</div>
+      </div>
+      <div class="loc-pillar">
+        <svg class="loc-pillar-icon" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+        <div class="loc-pillar-name">Luxury &amp; Comfort</div>
+        <div class="loc-pillar-desc">High-end accommodation and service throughout your stay</div>
+      </div>
+      <div class="loc-pillar">
+        <svg class="loc-pillar-icon" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+        <div class="loc-pillar-name">Designed for Healing</div>
+        <div class="loc-pillar-desc">Spaces that support both deep therapeutic work and genuine restoration</div>
+      </div>
+    </div>
+    <p class="loc-note fade-up">Location details are shared as part of your bespoke programme design process.</p>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="who">
+  <div class="who-inner">
+    <div class="who-top fade-up">
+      <p class="section-label">Who It's For</p>
+      <h2 class="section-heading">Designed for those ready to do<br><em>something real.</em></h2>
+      <p class="section-intro" style="max-width:620px;font-size:0.9rem;line-height:1.9;color:var(--charcoal);opacity:0.65;">Psynara is designed for individuals and couples seeking meaningful, focused change within a supportive and private environment.</p>
+    </div>
+    <div class="why-intensive fade-up">
+      <p class="why-intensive-label">Why an intensive retreat?</p>
+      <p class="why-intensive-text">Weekly therapy is valuable — but it has limits. At Psynara, the retreat format creates conditions that weekly sessions simply cannot: complete focus, removal from everyday pressures, and the rare opportunity to go deeper, faster, within a contained and fully supported environment. The immersive nature of the experience allows for a quality and depth of change that is difficult to access when life continues at full pace around you.</p>
+    </div>
+    <div class="who-grid fade-up">
+      <div class="who-group">
+        <div class="who-group-title">Individuals</div>
+        <div class="who-list">
+          <div class="who-item">Working through trauma or difficult life experiences</div>
+          <div class="who-item">Seeking clarity during life transitions or periods of uncertainty</div>
+          <div class="who-item">Experiencing burnout, overwhelm, or emotional fatigue</div>
+          <div class="who-item">Working through grief, loss, or significant change</div>
+          <div class="who-item">Addressing behavioural patterns, including addiction</div>
+          <div class="who-item">Wanting space away from daily demands to focus on personal growth</div>
+        </div>
+      </div>
+      <div class="who-group">
+        <div class="who-group-title">Couples</div>
+        <div class="who-list">
+          <div class="who-item">Navigating conflict, disconnection, or major relationship decisions</div>
+          <div class="who-item">Looking to deepen connection and strengthen communication</div>
+          <div class="who-item">Seeking to understand each other more deeply and repair what has frayed</div>
+          <div class="who-item">Working through a major life transition as a couple</div>
+        </div>
+      </div>
+      <div class="who-group">
+        <div class="who-group-title">Those seeking more</div>
+        <div class="who-list">
+          <div class="who-item">Already engaged in therapy and seeking a deeper, more immersive experience</div>
+          <div class="who-item">Wanting to understand long-standing emotional or relational patterns</div>
+          <div class="who-item">Seeking an intensive therapeutic experience beyond traditional weekly therapy</div>
+          <div class="who-item">Looking to integrate healing practices alongside clinical work</div>
+        </div>
+      </div>
+    </div>
+    <p class="who-footer fade-up">Psynara is also appropriate for individuals who may have already engaged in therapy and are seeking a deeper, more immersive experience.</p>
+  </div>
+</section>
+
+<!-- PRACTICALITIES -->
+<section class="practicalities">
+  <div class="prac-inner">
+    <div class="prac-block fade-up">
+      <p class="prac-label">Duration</p>
+      <h3 class="prac-heading">Retreat Durations</h3>
+      <p class="prac-body">Retreat durations are thoughtfully curated within each offering, with programmes designed to provide the appropriate depth and pace for meaningful transformation.</p>
+      <p class="prac-body">Duration is discussed during your initial consultation and tailored to your individual needs and goals.</p>
+    </div>
+    <div class="prac-block fade-up">
+      <p class="prac-label">What's Included</p>
+      <h3 class="prac-heading">Everything You Need</h3>
+      <div class="prac-list">
+        <div class="prac-item">Luxury accommodation throughout your retreat</div>
+        <div class="prac-item">All meals and refreshments</div>
+        <div class="prac-item">Daily therapy sessions with your dedicated clinician</div>
+        <div class="prac-item">Guided practices and experiential elements</div>
+        <div class="prac-item">Personalised programme design</div>
+        <div class="prac-item">Pre-retreat consultation</div>
+        <div class="prac-item">Integration support following your retreat</div>
+        <div class="prac-item">A curated selection of Psynara gifts and personal items to support comfort, reflection, and your ongoing journey</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATION PROMISE -->
+<section class="integration">
+  <div class="integration-inner fade-up">
+    <p class="section-label">The Integration Promise</p>
+    <h2 class="integration-heading">The retreat is not the end.<br><em>It is the beginning.</em></h2>
+    <p class="integration-body">At Psynara, transformation does not stop when you leave. We support integration through follow-up contact, personalised recommendations, and continued therapeutic guidance — helping you embed insights into everyday life.</p>
+    <blockquote class="integration-pull">You leave with more than clarity. You leave with a supported pathway forward.</blockquote>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="exp-cta">
+  <div class="exp-cta-inner fade-up">
+    <p class="cta-eyebrow">Begin Your Journey</p>
+    <h2 class="cta-heading">Ready to take the first<br><em>step toward real change?</em></h2>
+    <a href="/enquire" class="cta-btn filled">Begin Your Enquiry</a>
+    <a href="retreats.html" class="cta-btn">Explore Retreats</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      <p class="footer-tagline">Where the mind meets the whole.</p>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="about.html">About</a></li>
+      <li><a href="retreats.html">Retreats</a></li>
+      <li><a href="experience.html">The Experience</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="/enquire">Enquire</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2025 Psynara. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// Fade-up on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
