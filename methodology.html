@@ -16,6 +16,7 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--cream);color:var(--black);overflow-x:hidden;font-weight:300}
 
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;transition:background 0.4s}
 nav.scrolled{background:rgba(48,61,53,0.93);backdrop-filter:blur(12px)}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
@@ -24,23 +25,63 @@ nav.scrolled{background:rgba(48,61,53,0.93);backdrop-filter:blur(12px)}
 .nav-cta{font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--white);border:0.5px solid rgba(255,255,255,0.5);padding:0.6rem 1.4rem;text-decoration:none;transition:all 0.3s}
 .nav-cta:hover{background:var(--white);color:var(--forest)}
 
+/* ── HERO ── */
 .page-hero{position:relative;height:65vh;min-height:480px;display:flex;align-items:flex-end;overflow:hidden;background:var(--charcoal)}
 .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(30,38,33,0.2) 0%,rgba(30,38,33,0.8) 100%)}
 .page-hero-content{position:relative;z-index:2;padding:0 3rem 5rem;max-width:800px}
 .page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--beige);margin-bottom:1rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.2s forwards}
 .page-hero-title{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:300;line-height:1.1;color:var(--white);opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.4s forwards}
 .page-hero-title em{font-style:italic}
+.page-hero-sub{font-size:0.95rem;line-height:1.8;color:rgba(255,255,255,0.6);max-width:520px;margin-top:1.4rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.6s forwards}
 
-.coming-soon{background:var(--white);padding:8rem 3rem;text-align:center}
-.coming-soon-inner{max-width:580px;margin:0 auto}
-.cs-label{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:2rem}
-.cs-heading{font-family:var(--serif);font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:300;color:var(--forest);line-height:1.3;margin-bottom:1.5rem}
-.cs-heading em{font-style:italic}
-.cs-body{font-size:0.9rem;line-height:1.9;color:var(--charcoal);opacity:0.6;margin-bottom:2.5rem}
-.cs-tags{display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem}
-.cs-tag{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive);border:0.5px solid rgba(105,116,85,0.35);padding:0.4rem 0.9rem}
-.cs-link{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--terracotta);text-decoration:none;border-bottom:0.5px solid currentColor;padding-bottom:0.2rem}
+/* ── INTRO ── */
+.meth-intro{background:var(--white);padding:6rem 3rem}
+.meth-intro-inner{max-width:760px;margin:0 auto;text-align:center}
+.section-label{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:1rem}
+.meth-intro-heading{font-family:var(--serif);font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:300;color:var(--forest);line-height:1.3;margin-bottom:1.2rem}
+.meth-intro-heading em{font-style:italic}
+.meth-intro-body{font-size:0.9rem;line-height:1.9;color:var(--charcoal);opacity:0.65;max-width:620px;margin:0 auto}
 
+/* ── METHODOLOGY EXPLORER ── */
+.meth-explorer{background:var(--cream);padding:5rem 3rem 7rem}
+.meth-explorer-inner{max-width:1100px;margin:0 auto}
+
+/* Tag buttons */
+.meth-tags{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:3rem}
+.meth-btn{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--charcoal);border:0.5px solid rgba(61,48,48,0.25);padding:0.55rem 1.1rem;background:transparent;cursor:pointer;transition:all 0.25s;opacity:0.7}
+.meth-btn:hover{border-color:var(--forest);color:var(--forest);opacity:1}
+.meth-btn.active{background:var(--forest);color:var(--white);border-color:var(--forest);opacity:1}
+
+/* Panel */
+.meth-panel{display:none;opacity:0;transform:translateY(12px);transition:opacity 0.4s ease,transform 0.4s ease}
+.meth-panel.active{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start}
+.meth-panel.visible{opacity:1;transform:translateY(0)}
+.panel-type{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:1.2rem}
+.panel-heading{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;line-height:1.1;color:var(--forest);margin-bottom:2rem}
+.panel-heading em{font-style:italic}
+.panel-blocks{display:flex;flex-direction:column;gap:2rem}
+.panel-block-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:0.6rem}
+.panel-block-text{font-size:0.9rem;line-height:1.9;color:var(--charcoal);opacity:0.75}
+.panel-sidebar{background:var(--white);padding:2.5rem 2rem;position:sticky;top:7rem}
+.sidebar-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:1rem}
+.sidebar-type-tag{display:inline-block;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);border:0.5px solid var(--forest);padding:0.35rem 0.8rem;margin-bottom:1.8rem;opacity:0.7}
+.sidebar-heading{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--forest);margin-bottom:0.5rem;margin-top:1.5rem}
+.sidebar-text{font-size:0.8rem;line-height:1.7;color:var(--warm-grey)}
+.sidebar-divider{border:none;border-top:0.5px solid var(--beige);margin:1.5rem 0}
+.sidebar-evidence{margin-top:0}
+.evidence-link{display:block;font-size:0.75rem;color:var(--terracotta);text-decoration:none;margin-top:0.5rem;border-bottom:0.5px solid transparent;transition:border-color 0.2s;padding-bottom:0.1rem;word-break:break-word}
+.evidence-link:hover{border-color:var(--terracotta)}
+
+/* ── INTEGRATION NOTE ── */
+.meth-note{background:var(--forest);padding:5rem 3rem}
+.meth-note-inner{max-width:760px;margin:0 auto;text-align:center}
+.meth-note-heading{font-family:var(--serif);font-size:clamp(1.6rem,2.3vw,2.2rem);font-weight:300;line-height:1.3;color:var(--white);margin-bottom:1.2rem}
+.meth-note-heading em{font-style:italic;color:var(--beige)}
+.meth-note-body{font-size:0.88rem;line-height:1.9;color:rgba(255,255,255,0.5);margin-bottom:2rem}
+.meth-back{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--beige);text-decoration:none;border-bottom:0.5px solid rgba(198,188,174,0.4);padding-bottom:0.2rem;transition:opacity 0.2s}
+.meth-back:hover{opacity:0.7}
+
+/* ── FOOTER ── */
 footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px solid rgba(198,188,174,0.1)}
 .footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3rem;padding-bottom:3rem;border-bottom:0.5px solid rgba(198,188,174,0.15)}
 .footer-tagline{font-family:var(--serif);font-size:0.9rem;font-style:italic;color:rgba(255,255,255,0.35);margin-top:0.8rem}
@@ -69,33 +110,330 @@ footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px soli
   <a href="/enquire" class="nav-cta">Begin Your Enquiry</a>
 </nav>
 
+<!-- HERO -->
 <section class="page-hero">
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <p class="page-eyebrow">Our Methodology</p>
     <h1 class="page-hero-title">The science behind<br><em>lasting change.</em></h1>
+    <p class="page-hero-sub">Every approach we use is chosen with intention. Here is what each one is, why it works, and how it shapes your experience at Psynara.</p>
   </div>
 </section>
 
-<section class="coming-soon">
-  <div class="coming-soon-inner fade-up">
-    <p class="cs-label">Coming Soon</p>
-    <h2 class="cs-heading">A deeper look at how<br><em>Psynara works.</em></h2>
-    <p class="cs-body">This page will provide detailed insight into the evidence-based approaches and integrative practices at the heart of the Psynara methodology — what they are, why they work, and how they are woven together in your bespoke programme.</p>
-    <div class="cs-tags">
-      <span class="cs-tag">EMDR</span>
-      <span class="cs-tag">Schema Therapy</span>
-      <span class="cs-tag">Gottman Method</span>
-      <span class="cs-tag">EFT</span>
-      <span class="cs-tag">Discernment Counselling</span>
-      <span class="cs-tag">Somatic Work</span>
-      <span class="cs-tag">Mindfulness</span>
-      <span class="cs-tag">Breathwork</span>
+<!-- INTRO -->
+<section class="meth-intro">
+  <div class="meth-intro-inner fade-up">
+    <p class="section-label">Our Approach</p>
+    <h2 class="meth-intro-heading">Clinical excellence and<br><em>holistic practice, woven together.</em></h2>
+    <p class="meth-intro-body">Psynara draws on a carefully selected range of evidence-based therapies and integrative practices. No single approach is applied in isolation. Each programme weaves together what is most clinically appropriate and personally resonant for the individual or couple. Select any methodology below to explore it in depth.</p>
+  </div>
+</section>
+
+<!-- METHODOLOGY EXPLORER -->
+<section class="meth-explorer">
+  <div class="meth-explorer-inner">
+
+    <div class="meth-tags fade-up">
+      <button class="meth-btn" data-method="emdr">EMDR</button>
+      <button class="meth-btn" data-method="schema">Schema Therapy</button>
+      <button class="meth-btn" data-method="gottman">Gottman Method</button>
+      <button class="meth-btn" data-method="eft">EFT</button>
+      <button class="meth-btn" data-method="discernment">Discernment Counselling</button>
+      <button class="meth-btn" data-method="somatic">Somatic Work</button>
+      <button class="meth-btn" data-method="mindfulness">Mindfulness</button>
+      <button class="meth-btn" data-method="breathwork">Breathwork</button>
     </div>
-    <a href="experience.html" class="cs-link">&#8592; Back to The Experience</a>
+
+    <!-- EMDR -->
+    <div class="meth-panel" id="panel-emdr">
+      <div class="panel-left">
+        <p class="panel-type">Trauma Therapy</p>
+        <h2 class="panel-heading">Eye Movement Desensitisation<br><em>and Reprocessing</em></h2>
+        <div class="panel-blocks">
+          <div>
+            <p class="panel-block-label">What it is</p>
+            <p class="panel-block-text">EMDR is a structured, evidence-based therapy developed by Dr Francine Shapiro to help people process and integrate distressing memories and traumatic experiences. Using bilateral stimulation, typically guided eye movements, the brain is supported to reprocess memories that have become stuck, allowing them to lose their emotional charge and be stored more adaptively.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">Why it works</p>
+            <p class="panel-block-text">When we experience trauma or overwhelming stress, the brain's natural processing system can become disrupted. Memories become frozen, triggering intense emotional and physical responses long after the event has passed. EMDR activates the same processing that occurs during REM sleep, helping the brain complete what it could not at the time. The result is not forgetting, but a change in how the memory is held.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">At Psynara</p>
+            <p class="panel-block-text">EMDR is used within our trauma healing and addiction recovery retreats. The immersive retreat environment provides the continuity and containment that deeper EMDR work often requires, and is complemented by somatic practices and breathwork to support integration between sessions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-sidebar">
+        <p class="sidebar-label">At a glance</p>
+        <span class="sidebar-type-tag">Trauma</span>
+        <p class="sidebar-heading">Best suited for</p>
+        <p class="sidebar-text">Trauma, PTSD, anxiety, grief, adverse childhood experiences, addiction recovery</p>
+        <hr class="sidebar-divider">
+        <div class="sidebar-evidence">
+          <p class="sidebar-label">Evidence base</p>
+          <p class="sidebar-text">Endorsed by the WHO, NHS, and APA as a first-line treatment for PTSD.</p>
+          <a href="https://www.emdria.org/about-emdr-therapy/" target="_blank" rel="noopener" class="evidence-link">EMDR International Association &#8594;</a>
+          <a href="https://www.who.int/publications/i/item/9789241548236" target="_blank" rel="noopener" class="evidence-link">WHO Guidelines on Trauma &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHEMA THERAPY -->
+    <div class="meth-panel" id="panel-schema">
+      <div class="panel-left">
+        <p class="panel-type">Individual Therapy</p>
+        <h2 class="panel-heading">Schema<br><em>Therapy</em></h2>
+        <div class="panel-blocks">
+          <div>
+            <p class="panel-block-label">What it is</p>
+            <p class="panel-block-text">Schema Therapy, developed by Dr Jeffrey Young, is an integrative approach that identifies and works with deep-rooted patterns of thinking, feeling, and behaving, known as schemas, that formed in response to unmet needs in childhood. These schemas operate largely outside awareness, yet continue to shape how we experience ourselves, others, and the world.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">Why it works</p>
+            <p class="panel-block-text">Many of the difficulties people carry into adulthood, persistent feelings of inadequacy, difficulty trusting others, self-sabotaging patterns, or emotional volatility, are rooted not in weakness but in adaptive responses that once served a purpose. Schema Therapy works at a depth that many approaches do not reach, offering both understanding and a pathway to genuine change through cognitive, experiential, and relational techniques.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">At Psynara</p>
+            <p class="panel-block-text">Schema Therapy is woven through our individual retreats, particularly where clients are exploring long-standing emotional patterns, relational difficulties, or a sense of being stuck despite previous therapeutic work. It provides a compassionate framework for understanding the self at a deeper level.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-sidebar">
+        <p class="sidebar-label">At a glance</p>
+        <span class="sidebar-type-tag">Individual</span>
+        <p class="sidebar-heading">Best suited for</p>
+        <p class="sidebar-text">Long-standing emotional patterns, personality difficulties, relational challenges, chronic low self-worth, recurrent depression or anxiety</p>
+        <hr class="sidebar-divider">
+        <div class="sidebar-evidence">
+          <p class="sidebar-label">Evidence base</p>
+          <p class="sidebar-text">Strong evidence for effectiveness with personality disorders, chronic depression, and complex trauma.</p>
+          <a href="https://www.schematherapy.com" target="_blank" rel="noopener" class="evidence-link">Schema Therapy Institute &#8594;</a>
+          <a href="https://www.isst-online.com" target="_blank" rel="noopener" class="evidence-link">International Society for Schema Therapy &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOTTMAN METHOD -->
+    <div class="meth-panel" id="panel-gottman">
+      <div class="panel-left">
+        <p class="panel-type">Couples Therapy</p>
+        <h2 class="panel-heading">The Gottman<br><em>Method</em></h2>
+        <div class="panel-blocks">
+          <div>
+            <p class="panel-block-label">What it is</p>
+            <p class="panel-block-text">The Gottman Method is a research-based approach to couples therapy developed by Drs John and Julie Gottman, built on over 40 years of research into what distinguishes relationships that thrive from those that break down. It offers a structured yet deeply human framework for building friendship, trust, and effective communication, and for addressing the specific patterns that erode connection over time.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">Why it works</p>
+            <p class="panel-block-text">The Gottman Method is grounded in observation, not theory alone. By studying thousands of couples, the Gottmans identified precise predictors of relationship breakdown and developed targeted interventions to address them. It works because it is specific: rather than offering general communication advice, it identifies the exact patterns at play in your relationship and provides practical, evidence-based tools to shift them.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">At Psynara</p>
+            <p class="panel-block-text">The Gottman Method forms a central part of our couples retreats, providing structure and depth to the relational work. The retreat setting allows for an immersive application of this approach, with sessions, exercises, and reflective time woven together into a coherent therapeutic journey.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-sidebar">
+        <p class="sidebar-label">At a glance</p>
+        <span class="sidebar-type-tag">Couples</span>
+        <p class="sidebar-heading">Best suited for</p>
+        <p class="sidebar-text">Couples experiencing conflict, communication breakdown, emotional distance, trust repair, or those wanting to deepen an already strong relationship</p>
+        <hr class="sidebar-divider">
+        <div class="sidebar-evidence">
+          <p class="sidebar-label">Evidence base</p>
+          <p class="sidebar-text">Over 40 years of research. Proven to reduce conflict and improve relationship satisfaction.</p>
+          <a href="https://www.gottman.com/about/research/" target="_blank" rel="noopener" class="evidence-link">The Gottman Institute Research &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EFT -->
+    <div class="meth-panel" id="panel-eft">
+      <div class="panel-left">
+        <p class="panel-type">Couples &amp; Individual Therapy</p>
+        <h2 class="panel-heading">Emotionally Focused<br><em>Therapy</em></h2>
+        <div class="panel-blocks">
+          <div>
+            <p class="panel-block-label">What it is</p>
+            <p class="panel-block-text">Emotionally Focused Therapy (EFT), developed by Dr Sue Johnson, is an attachment-based approach that helps individuals and couples understand and reshape their emotional responses and interaction patterns. It is grounded in attachment theory, recognising that the need for safe emotional connection is a fundamental human drive, not a weakness or dependency.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">Why it works</p>
+            <p class="panel-block-text">At the heart of most relational and emotional difficulties are attachment needs that are not being met or communicated. When people feel unsafe in their attachment bonds, they move into protective patterns: withdrawing, pursuing, shutting down, or escalating. EFT helps people identify these patterns, understand the vulnerable emotions beneath them, and communicate in ways that invite genuine connection rather than further distance.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">At Psynara</p>
+            <p class="panel-block-text">EFT is used within both our couples and individual retreats. For couples, it works alongside the Gottman Method to address the emotional landscape of the relationship. For individuals, it supports a deeper understanding of attachment patterns and how they shape close relationships.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-sidebar">
+        <p class="sidebar-label">At a glance</p>
+        <span class="sidebar-type-tag">Couples &amp; Individual</span>
+        <p class="sidebar-heading">Best suited for</p>
+        <p class="sidebar-text">Relational disconnection, emotional withdrawal or reactivity, attachment anxiety or avoidance, relationship repair</p>
+        <hr class="sidebar-divider">
+        <div class="sidebar-evidence">
+          <p class="sidebar-label">Evidence base</p>
+          <p class="sidebar-text">Recognised by the American Psychological Association as an empirically supported treatment for couples distress.</p>
+          <a href="https://iceeft.com/what-is-eft/" target="_blank" rel="noopener" class="evidence-link">International Centre for EFT &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCERNMENT COUNSELLING -->
+    <div class="meth-panel" id="panel-discernment">
+      <div class="panel-left">
+        <p class="panel-type">Couples Therapy</p>
+        <h2 class="panel-heading">Discernment<br><em>Counselling</em></h2>
+        <div class="panel-blocks">
+          <div>
+            <p class="panel-block-label">What it is</p>
+            <p class="panel-block-text">Discernment Counselling is a specialised, short-term approach developed by Dr Bill Doherty for couples where one or both partners are uncertain about whether to continue the relationship. Rather than working on the relationship itself, it creates a safe, structured space to explore three possible paths: remaining as you are, separating, or committing to a defined period of genuine couples work.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">Why it works</p>
+            <p class="panel-block-text">When a relationship reaches the point of significant uncertainty, traditional couples therapy is often not appropriate and can even increase distress. Discernment Counselling meets couples exactly where they are, without pressure toward any particular outcome. It helps each person gain clarity about what they truly want and why, so that whatever decision is made, it is made with honesty and intention.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">At Psynara</p>
+            <p class="panel-block-text">Discernment Counselling is offered within our couples pathway for those navigating significant relationship uncertainty. The retreat setting provides the focused time and safe containment that this work requires, away from the noise and pressure of daily life.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-sidebar">
+        <p class="sidebar-label">At a glance</p>
+        <span class="sidebar-type-tag">Couples</span>
+        <p class="sidebar-heading">Best suited for</p>
+        <p class="sidebar-text">Couples where one or both partners are uncertain about the future of the relationship, or where previous couples therapy has not been helpful</p>
+        <hr class="sidebar-divider">
+        <div class="sidebar-evidence">
+          <p class="sidebar-label">Evidence base</p>
+          <p class="sidebar-text">Developed by Prof. Bill Doherty at the University of Minnesota. Designed specifically for mixed-agenda couples.</p>
+          <a href="https://www.discernmentcounseling.com" target="_blank" rel="noopener" class="evidence-link">Discernment Counselling &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOMATIC WORK -->
+    <div class="meth-panel" id="panel-somatic">
+      <div class="panel-left">
+        <p class="panel-type">Integrative Practice</p>
+        <h2 class="panel-heading">Somatic<br><em>Work</em></h2>
+        <div class="panel-blocks">
+          <div>
+            <p class="panel-block-label">What it is</p>
+            <p class="panel-block-text">Somatic work is a body-centred approach that recognises the inseparable connection between physical sensation, emotion, and experience. Rather than working exclusively at a cognitive or verbal level, somatic practices bring awareness to what is held in the body, supporting the release and integration of emotional material stored in the nervous system. It draws on traditions including Somatic Experiencing, developed by Dr Peter Levine, and the work of Dr Bessel van der Kolk.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">Why it works</p>
+            <p class="panel-block-text">As van der Kolk's landmark research demonstrated, the body keeps the score. Trauma, chronic stress, and emotional suppression are not only psychological experiences but physiological ones, held in muscle tension, posture, breath, and nervous system activation. Cognitive approaches alone often cannot reach these deeper layers. Somatic work provides a direct pathway to the body's intelligence, supporting regulation, release, and embodied healing.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">At Psynara</p>
+            <p class="panel-block-text">Somatic practices are integrated throughout retreat programmes, complementing the clinical therapeutic work. They support nervous system regulation between sessions, help clients access and process material that words alone cannot reach, and deepen the integration of insights gained in therapy.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-sidebar">
+        <p class="sidebar-label">At a glance</p>
+        <span class="sidebar-type-tag">Integrative</span>
+        <p class="sidebar-heading">Best suited for</p>
+        <p class="sidebar-text">Trauma, chronic stress, emotional numbness or disconnection, anxiety held in the body, burnout</p>
+        <hr class="sidebar-divider">
+        <div class="sidebar-evidence">
+          <p class="sidebar-label">Evidence base</p>
+          <p class="sidebar-text">Grounded in neuroscience and polyvagal theory. Van der Kolk's research highlighted the limitations of purely cognitive approaches to trauma.</p>
+          <a href="https://www.somaticexperiencing.com" target="_blank" rel="noopener" class="evidence-link">Somatic Experiencing International &#8594;</a>
+          <a href="https://www.besselvanderkolk.com/resources/the-body-keeps-the-score" target="_blank" rel="noopener" class="evidence-link">The Body Keeps the Score &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MINDFULNESS -->
+    <div class="meth-panel" id="panel-mindfulness">
+      <div class="panel-left">
+        <p class="panel-type">Integrative Practice</p>
+        <h2 class="panel-heading">Mindfulness-Based<br><em>Practice</em></h2>
+        <div class="panel-blocks">
+          <div>
+            <p class="panel-block-label">What it is</p>
+            <p class="panel-block-text">Mindfulness is the practice of bringing deliberate, non-judgmental attention to present-moment experience. Rooted in contemplative traditions and now supported by substantial clinical research, it has been formalised into structured interventions including Mindfulness-Based Stress Reduction (MBSR), developed by Jon Kabat-Zinn, and Mindfulness-Based Cognitive Therapy (MBCT), developed by Segal, Williams, and Teasdale.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">Why it works</p>
+            <p class="panel-block-text">Mindfulness interrupts the automatic patterns of reactivity, rumination, and avoidance that maintain emotional suffering. Regular practice builds the capacity to observe thoughts and feelings without being overwhelmed by them, creating a space between stimulus and response in which genuine choice becomes possible. Neuroimaging research has demonstrated measurable changes in brain structure and function associated with mindfulness practice, particularly in areas related to attention, emotional regulation, and self-awareness.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">At Psynara</p>
+            <p class="panel-block-text">Mindfulness is woven into the daily rhythm of retreat life, beginning with morning practices that ground clients in their bodies and the present moment before therapeutic work begins. It also supports integration throughout the day and deepens the capacity to remain present with difficult material in sessions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-sidebar">
+        <p class="sidebar-label">At a glance</p>
+        <span class="sidebar-type-tag">Integrative</span>
+        <p class="sidebar-heading">Best suited for</p>
+        <p class="sidebar-text">Anxiety, depression, stress, emotional reactivity, difficulty being present, recurrent negative thought patterns</p>
+        <hr class="sidebar-divider">
+        <div class="sidebar-evidence">
+          <p class="sidebar-label">Evidence base</p>
+          <p class="sidebar-text">Extensive research base including NICE-approved MBCT for recurrent depression prevention.</p>
+          <a href="https://www.umassmed.edu/cfm/mindfulness-based-programs/mbsr-courses/" target="_blank" rel="noopener" class="evidence-link">UMass MBSR Programme &#8594;</a>
+          <a href="https://www.oxfordmindfulness.org/learn/what-is-mindfulness-based-cognitive-therapy-mbct/" target="_blank" rel="noopener" class="evidence-link">Oxford Mindfulness Centre &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BREATHWORK -->
+    <div class="meth-panel" id="panel-breathwork">
+      <div class="panel-left">
+        <p class="panel-type">Integrative Practice</p>
+        <h2 class="panel-heading">Therapeutic<br><em>Breathwork</em></h2>
+        <div class="panel-blocks">
+          <div>
+            <p class="panel-block-label">What it is</p>
+            <p class="panel-block-text">Therapeutic breathwork uses structured breathing practices to shift physiological and emotional states, release stored tension, and access deeper layers of experience. It encompasses a range of approaches, from gentle breath-awareness and regulation techniques to more experiential practices such as Holotropic Breathwork, developed by Dr Stanislav Grof, and trauma-informed breathwork used within somatic therapy.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">Why it works</p>
+            <p class="panel-block-text">The breath is a unique physiological bridge: the only function of the autonomic nervous system that can also be brought under conscious control. Specific breathing patterns directly influence heart rate, nervous system activation, and emotional state. This makes breathwork a powerful tool for both calming an activated system and, in deeper practice, for accessing and releasing emotional material that may be difficult to reach through verbal means alone.</p>
+          </div>
+          <div>
+            <p class="panel-block-label">At Psynara</p>
+            <p class="panel-block-text">Breathwork is used both as a grounding practice at the start of each day and, where clinically appropriate, as a deeper experiential tool within the retreat programme. It supports nervous system regulation, emotional processing, and the integration of therapeutic insights between sessions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-sidebar">
+        <p class="sidebar-label">At a glance</p>
+        <span class="sidebar-type-tag">Integrative</span>
+        <p class="sidebar-heading">Best suited for</p>
+        <p class="sidebar-text">Anxiety, stress, nervous system dysregulation, emotional blockages, trauma integration, burnout</p>
+        <hr class="sidebar-divider">
+        <div class="sidebar-evidence">
+          <p class="sidebar-label">Evidence base</p>
+          <p class="sidebar-text">Growing research base in breathwork and autonomic nervous system regulation. Polyvagal theory provides key neurological underpinning.</p>
+          <a href="https://www.frontiersin.org/articles/10.3389/fpsyt.2022.884091/full" target="_blank" rel="noopener" class="evidence-link">Frontiers in Psychiatry: Breathwork Review &#8594;</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /meth-explorer-inner -->
+</section>
+
+<!-- CLOSING NOTE -->
+<section class="meth-note">
+  <div class="meth-note-inner fade-up">
+    <p class="section-label" style="color:var(--olive);text-align:center;margin-bottom:1.2rem">How it comes together</p>
+    <h2 class="meth-note-heading">No programme uses a single approach.<br><em>Everything is woven together for you.</em></h2>
+    <p class="meth-note-body">Each Psynara programme is individually designed. Your clinician will draw on the approaches most suited to your needs, pace, and goals, integrating clinical therapies with restorative and somatic practices to support transformation at every level.</p>
+    <a href="experience.html" class="meth-back">&#8592; Back to The Experience</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
@@ -121,10 +459,50 @@ footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px soli
 <script>
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// Fade-up observer
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Methodology tab interaction
+const btns = document.querySelectorAll('.meth-btn');
+const panels = document.querySelectorAll('.meth-panel');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const method = btn.dataset.method;
+    const targetPanel = document.getElementById('panel-' + method);
+
+    // If already active, deactivate (toggle off)
+    if (btn.classList.contains('active')) {
+      btn.classList.remove('active');
+      targetPanel.classList.remove('active', 'visible');
+      return;
+    }
+
+    // Deactivate all
+    btns.forEach(b => b.classList.remove('active'));
+    panels.forEach(p => { p.classList.remove('active', 'visible'); });
+
+    // Activate selected
+    btn.classList.add('active');
+    targetPanel.classList.add('active');
+
+    // Trigger animation on next frame
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        targetPanel.classList.add('visible');
+      });
+    });
+
+    // Smooth scroll to panel
+    setTimeout(() => {
+      targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  });
+});
 </script>
 </body>
 </html>
