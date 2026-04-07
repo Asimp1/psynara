@@ -19,8 +19,6 @@ body{font-family:var(--sans);background:var(--cream);color:var(--black);overflow
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;transition:background 0.4s}
 nav.scrolled{background:rgba(48,61,53,0.93);backdrop-filter:blur(12px)}
-.nav-logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
-.nav-logo img{height:28px;width:auto;filter:brightness(0) invert(1)}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{font-size:0.78rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;transition:color 0.2s}
 .nav-links a:hover,.nav-links a.active{color:var(--beige)}
@@ -29,72 +27,92 @@ nav.scrolled{background:rgba(48,61,53,0.93);backdrop-filter:blur(12px)}
 
 /* ── HERO ── */
 .page-hero{position:relative;height:65vh;min-height:480px;display:flex;align-items:flex-end;overflow:hidden;background:var(--forest)}
-.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(30,38,33,0.2) 0%,rgba(30,38,33,0.75) 100%)}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(30,38,33,0.1) 0%,rgba(30,38,33,0.8) 100%)}
 .page-hero-content{position:relative;z-index:2;padding:0 3rem 5rem;max-width:800px}
 .page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--beige);margin-bottom:1rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.2s forwards}
 .page-hero-title{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:300;line-height:1.1;color:var(--white);opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.4s forwards}
 .page-hero-title em{font-style:italic}
-.page-hero-sub{font-size:0.95rem;line-height:1.8;color:rgba(255,255,255,0.6);max-width:560px;margin-top:1.4rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.6s forwards}
+.page-hero-sub{font-size:0.95rem;line-height:1.8;color:rgba(255,255,255,0.6);max-width:520px;margin-top:1.4rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.6s forwards}
 
 /* ── INTRO ── */
-.team-intro{background:var(--white);padding:6rem 3rem;text-align:center}
-.team-intro-inner{max-width:680px;margin:0 auto}
+.team-intro{background:var(--white);padding:5rem 3rem;text-align:center}
+.team-intro-inner{max-width:660px;margin:0 auto}
 .section-label{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:1rem}
-.team-intro-heading{font-family:var(--serif);font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:300;color:var(--forest);line-height:1.3;margin-bottom:1.2rem}
+.team-intro-heading{font-family:var(--serif);font-size:clamp(1.6rem,2.3vw,2.3rem);font-weight:300;color:var(--forest);line-height:1.35;margin-bottom:1.2rem}
 .team-intro-heading em{font-style:italic}
-.team-intro-body{font-size:0.9rem;line-height:1.9;color:var(--charcoal);opacity:0.65}
-.divider{width:40px;height:0.5px;background:var(--beige);margin:2.5rem auto}
+.team-intro-body{font-size:0.88rem;line-height:1.9;color:var(--charcoal);opacity:0.6}
+.divider{width:40px;height:0.5px;background:var(--beige);margin:2rem auto}
 
-/* ── CLINICIAN CARDS ── */
-.clinicians{background:var(--cream);padding:7rem 3rem}
-.clinicians-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+/* ── ELEGANT LIST ── */
+.clinicians{background:var(--cream);padding:0}
 
-.clinician{display:grid;grid-template-columns:380px 1fr;min-height:600px;background:var(--beige)}
-.clinician:nth-child(even){grid-template-columns:1fr 380px;background:var(--white)}
-.clinician:nth-child(even) .clinician-photo{order:2}
-.clinician:nth-child(even) .clinician-content{order:1;background:var(--white)}
+.clinician-row{display:grid;grid-template-columns:420px 1fr;min-height:560px;border-top:0.5px solid rgba(198,188,174,0.5)}
+.clinician-row:last-child{border-bottom:0.5px solid rgba(198,188,174,0.5)}
 
-.clinician-photo{position:relative;overflow:hidden;background:var(--forest)}
-.clinician-photo-inner{width:100%;height:100%;min-height:500px;background:var(--forest);display:flex;align-items:flex-end;}
-.clinician-photo-placeholder{width:100%;height:100%;min-height:500px;background:linear-gradient(135deg,var(--forest) 0%,var(--olive) 100%);display:flex;align-items:flex-end;padding:2rem}
-.clinician-name-overlay{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:rgba(255,255,255,0.12);line-height:1;letter-spacing:0.02em}
+/* Photo column */
+.cl-photo{position:relative;overflow:hidden;background:var(--beige)}
+.cl-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.8s ease}
+.clinician-row:hover .cl-photo img{transform:scale(1.03)}
+.cl-photo-placeholder{width:100%;height:100%;min-height:560px;display:flex;align-items:center;justify-content:center;background:var(--beige)}
 
-.clinician-content{padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--cream)}
-.clinician-type{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:1.2rem;opacity:0.85}
-.clinician-name{font-family:var(--serif);font-size:clamp(2rem,2.8vw,2.8rem);font-weight:300;line-height:1.1;color:var(--forest);margin-bottom:0.4rem}
-.clinician-name em{font-style:italic}
-.clinician-title{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:2rem}
-.clinician-pull{font-family:var(--serif);font-size:1.1rem;font-style:italic;line-height:1.7;color:var(--forest);border-left:1.5px solid var(--beige);padding-left:1.5rem;margin-bottom:2rem;opacity:0.8}
-.clinician-body{font-size:0.88rem;line-height:1.95;color:var(--charcoal);opacity:0.7;margin-bottom:2rem}
-.clinician-body p+p{margin-top:1rem}
+/* Content column */
+.cl-content{padding:4rem 4.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--cream)}
+.clinician-row:nth-child(even) .cl-content{background:var(--white)}
+.clinician-row:nth-child(even){grid-template-columns:1fr 420px}
+.clinician-row:nth-child(even) .cl-photo{order:2}
+.clinician-row:nth-child(even) .cl-content{order:1}
 
-.clinician-specialisms{margin-bottom:2rem}
-.specialisms-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:0.8rem}
-.specialism-tags{display:flex;gap:0.4rem;flex-wrap:wrap}
-.specialism-tag{font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);border:0.5px solid rgba(105,116,85,0.35);padding:0.3rem 0.7rem}
+.cl-type{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:1rem;opacity:0.85}
+.cl-name{font-family:var(--serif);font-size:clamp(2.2rem,3vw,3.2rem);font-weight:300;line-height:1.05;color:var(--forest);margin-bottom:0.5rem}
+.cl-name em{font-style:italic}
+.cl-title{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:2rem;line-height:1.6}
+.cl-body{font-size:0.87rem;line-height:1.95;color:var(--charcoal);opacity:0.72;margin-bottom:2rem}
+.cl-body p+p{margin-top:0.9rem}
 
-.clinician-creds{border-top:0.5px solid var(--beige);padding-top:1.5rem}
-.creds-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:0.8rem}
-.cred-pills{display:flex;gap:0.5rem;flex-wrap:wrap}
-.cred-pill{font-size:0.65rem;letter-spacing:0.08em;color:var(--forest);border:0.5px solid rgba(48,61,53,0.3);padding:0.3rem 0.8rem;opacity:0.7}
+.cl-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:2rem}
+.cl-tag{font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);border:0.5px solid rgba(105,116,85,0.35);padding:0.28rem 0.65rem}
 
-/* ── APPROACH STRIP ── */
-.approach-strip{background:var(--forest);padding:6rem 3rem;text-align:center}
-.approach-strip-inner{max-width:760px;margin:0 auto}
-.approach-heading{font-family:var(--serif);font-size:clamp(1.8rem,2.5vw,2.4rem);font-weight:300;line-height:1.3;color:var(--white);margin-bottom:1.2rem}
+.cl-creds{border-top:0.5px solid rgba(198,188,174,0.6);padding-top:1.4rem;display:flex;gap:0.5rem;flex-wrap:wrap}
+.cl-cred{font-size:0.63rem;letter-spacing:0.07em;color:var(--forest);border:0.5px solid rgba(48,61,53,0.2);padding:0.28rem 0.7rem;opacity:0.65}
+
+/* ── FOUNDER FEATURE (you) ── */
+.founder-feature{background:var(--forest);padding:7rem 3rem}
+.founder-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:5rem;align-items:center}
+.founder-photo-wrap{position:relative}
+.founder-photo-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block}
+.founder-photo-placeholder{width:100%;aspect-ratio:3/4;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center}
+.founder-placeholder-text{font-family:var(--serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,0.25)}
+.founder-bar{background:rgba(198,188,174,0.12);padding:1rem 1.2rem;margin-top:0}
+.founder-bar-name{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--white)}
+.founder-bar-title{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--beige);opacity:0.65;margin-top:0.2rem}
+.founder-right .section-label{color:var(--olive)}
+.founder-type{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--beige);opacity:0.7;margin-bottom:1rem}
+.founder-name{font-family:var(--serif);font-size:clamp(2.2rem,3vw,3.2rem);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:0.5rem}
+.founder-name em{font-style:italic}
+.founder-title{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2rem;line-height:1.6}
+.founder-pull{font-family:var(--serif);font-size:1.1rem;font-style:italic;line-height:1.7;color:var(--beige);border-left:1px solid rgba(198,188,174,0.3);padding-left:1.5rem;margin-bottom:2rem;opacity:0.85}
+.founder-body{font-size:0.87rem;line-height:1.95;color:rgba(255,255,255,0.55)}
+.founder-body p+p{margin-top:0.9rem}
+.founder-creds{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:2rem}
+.founder-cred{font-size:0.63rem;letter-spacing:0.07em;color:rgba(255,255,255,0.5);border:0.5px solid rgba(255,255,255,0.2);padding:0.28rem 0.7rem}
+
+/* ── APPROACH ── */
+.approach-strip{background:var(--charcoal);padding:5rem 3rem;text-align:center}
+.approach-heading{font-family:var(--serif);font-size:clamp(1.6rem,2.3vw,2.3rem);font-weight:300;line-height:1.3;color:var(--white);margin-bottom:1rem}
 .approach-heading em{font-style:italic;color:var(--beige)}
-.approach-body{font-size:0.9rem;line-height:1.9;color:rgba(255,255,255,0.5);margin-bottom:2.5rem}
-.approach-link{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--beige);text-decoration:none;border-bottom:0.5px solid rgba(198,188,174,0.4);padding-bottom:0.2rem;transition:opacity 0.2s}
+.approach-body{font-size:0.88rem;line-height:1.9;color:rgba(255,255,255,0.45);max-width:580px;margin:0 auto 2rem}
+.approach-link{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.73rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--beige);text-decoration:none;border-bottom:0.5px solid rgba(198,188,174,0.4);padding-bottom:0.2rem;transition:opacity 0.2s;margin:0 1rem}
 .approach-link:hover{opacity:0.7}
 
 /* ── CTA ── */
-.team-cta{background:var(--charcoal);padding:6rem 3rem;text-align:center}
-.cta-eyebrow{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--beige);opacity:0.75;margin-bottom:1.4rem}
-.cta-heading{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.2;color:var(--white);margin-bottom:2.2rem}
+.team-cta{background:var(--cream);padding:6rem 3rem;text-align:center;border-top:0.5px solid rgba(198,188,174,0.5)}
+.cta-eyebrow{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:1.2rem}
+.cta-heading{font-family:var(--serif);font-size:clamp(1.8rem,3vw,3rem);font-weight:300;line-height:1.2;color:var(--forest);margin-bottom:2rem}
 .cta-heading em{font-style:italic}
-.cta-btn{display:inline-block;font-size:0.74rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--white);border:0.5px solid rgba(255,255,255,0.45);padding:0.85rem 2rem;text-decoration:none;transition:all 0.3s;margin:0 0.5rem}
-.cta-btn:hover{background:var(--white);color:var(--forest)}
-.cta-btn.filled{background:rgba(255,255,255,0.08)}
+.cta-btn{display:inline-block;font-size:0.73rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--white);background:var(--forest);border:0.5px solid var(--forest);padding:0.85rem 2rem;text-decoration:none;transition:all 0.3s;margin:0 0.4rem}
+.cta-btn:hover{background:transparent;color:var(--forest)}
+.cta-btn.outline{background:transparent;color:var(--forest);border:0.5px solid rgba(48,61,53,0.4)}
+.cta-btn.outline:hover{background:var(--forest);color:var(--white)}
 
 /* ── FOOTER ── */
 footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px solid rgba(198,188,174,0.1)}
@@ -116,14 +134,14 @@ footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px soli
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;">
-    <img src="wisdom-knot-stone.png" alt="Psynara Wisdom Knot" style="height:36px;width:auto;filter:brightness(0) invert(1);margin-right:0.5rem;">
-    <img src="wisdom-knot-stone.png" alt="Psynara" style="display:none">
+  <a href="index.html" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;">
+    <img src="wisdom-knot-stone.png" alt="Psynara Wisdom Knot" style="height:36px;width:auto;filter:brightness(0) invert(1);">
   </a>
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
     <li><a href="retreats.html">Retreats</a></li>
     <li><a href="experience.html">The Experience</a></li>
+    <li><a href="team.html" class="active">Our Clinicians</a></li>
     <li><a href="stories.html">Stories</a></li>
   </ul>
   <a href="/enquire" class="nav-cta">Begin Your Enquiry</a>
@@ -135,7 +153,7 @@ footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px soli
   <div class="page-hero-content">
     <p class="page-eyebrow">Our Clinicians</p>
     <h1 class="page-hero-title">The people behind<br><em>your transformation.</em></h1>
-    <p class="page-hero-sub">Every Psynara retreat is led by a fully licensed, deeply experienced clinician. People who bring both clinical rigour and genuine human warmth to everything they do.</p>
+    <p class="page-hero-sub">Every Psynara retreat is led by a fully licensed, deeply experienced clinician, chosen not only for their expertise, but for their capacity to create the safety that real change requires.</p>
   </div>
 </section>
 
@@ -143,127 +161,133 @@ footer{background:var(--charcoal);padding:4rem 3rem 2.5rem;border-top:0.5px soli
 <section class="team-intro">
   <div class="team-intro-inner fade-up">
     <p class="section-label">Who We Are</p>
-    <h2 class="team-intro-heading">Chosen not only for their expertise,<br>but for their ability to create <em>the safety that real transformation requires.</em></h2>
+    <h2 class="team-intro-heading">Evidence-based. Compassionate.<br><em>Built around the person in front of them.</em></h2>
     <div class="divider"></div>
-    <p class="team-intro-body">Psynara clinicians are fully qualified, licensed, and deeply experienced practitioners who have worked across a wide range of clinical settings. They bring evidence-based training and genuine compassion to every retreat they lead. At Psynara, they do not deliver programmes. They build relationships, and craft experiences tailored entirely around the person in front of them.</p>
+    <p class="team-intro-body">Psynara clinicians are fully qualified and licensed practitioners with deep experience across clinical settings. They bring rigour, warmth, and genuine presence to every retreat they lead — tailoring every element of the process to the individual.</p>
   </div>
 </section>
 
-<!-- CLINICIANS -->
-<section class="clinicians">
-  <div class="clinicians-inner">
-
-    <!-- DR JAMIE STEPHENSON -->
-    <div class="clinician fade-up">
-      <div class="clinician-photo">
-        <div class="clinician-photo-placeholder">
-          <span class="clinician-name-overlay">Jamie</span>
-        </div>
+<!-- FOUNDER FEATURE: AMELIA -->
+<section class="founder-feature">
+  <div class="founder-inner">
+    <div class="fade-up">
+      <div class="founder-photo-placeholder">
+        <p class="founder-placeholder-text">Photo coming soon</p>
       </div>
-      <div class="clinician-content">
-        <p class="clinician-type">Consultant Psychologist</p>
-        <h2 class="clinician-name">Dr Jamie<br><em>Stephenson</em></h2>
-        <p class="clinician-title">DCounsPsych &nbsp;·&nbsp; HCPC Registered &nbsp;·&nbsp; CDA Licensed, UAE &nbsp;·&nbsp; Chartered Member, BPS</p>
-        <blockquote class="clinician-pull">"Creating a safe, non-judgmental space is not just the starting point. It is the foundation on which everything else is built."</blockquote>
-        <div class="clinician-body">
-          <p>Dr Jamie Stephenson is a Consultant Psychologist with a doctorate in Counselling Psychology and a clinical career spanning NHS specialist services, private practice, corporate wellness, and university teaching at masters and doctorate level. He brings to each retreat a rare breadth of experience across therapeutic modalities, life stages, and presenting difficulties.</p>
-          <p>His approach is warm, collaborative, and deeply human. He believes the therapeutic relationship is not simply a vehicle for treatment, it is treatment in itself. Working within an integrative framework, he draws on cognitive behavioural, psychodynamic, and person-centred approaches, alongside specialist training in EMDR and Schema Therapy, to meet each client exactly where they are.</p>
-          <p>At Psynara, Jamie leads retreats focused on trauma, emotional healing, addiction recovery, and complex relational difficulties, bringing both clinical precision and genuine compassion to every day of the process.</p>
-        </div>
-        <div class="clinician-specialisms">
-          <p class="specialisms-label">Areas of Focus</p>
-          <div class="specialism-tags">
-            <span class="specialism-tag">Trauma &amp; PTSD</span>
-            <span class="specialism-tag">Anxiety</span>
-            <span class="specialism-tag">Depression</span>
-            <span class="specialism-tag">Addiction Recovery</span>
-            <span class="specialism-tag">Grief &amp; Loss</span>
-            <span class="specialism-tag">Relationship Difficulties</span>
-            <span class="specialism-tag">Personality Disorders</span>
-            <span class="specialism-tag">Eating Disorders</span>
-            <span class="specialism-tag">Burnout</span>
-          </div>
-        </div>
-        <div class="clinician-creds">
-          <p class="creds-label">Qualifications &amp; Training</p>
-          <div class="cred-pills">
-            <span class="cred-pill">Doctorate in Counselling Psychology</span>
-            <span class="cred-pill">HCPC Registered</span>
-            <span class="cred-pill">CDA Licensed, UAE</span>
-            <span class="cred-pill">Chartered Member, BPS</span>
-            <span class="cred-pill">EMDR Practitioner (Level 3)</span>
-            <span class="cred-pill">Schema Therapy Practitioner</span>
-            <span class="cred-pill">Advanced Clinical Supervisor (BPS)</span>
-          </div>
-        </div>
+      <div class="founder-bar">
+        <div class="founder-bar-name">Amelia Sear</div>
+        <div class="founder-bar-title">Founder &amp; Consultant Psychologist</div>
       </div>
     </div>
-
-    <!-- EUGENE TRABOULSI -->
-    <div class="clinician fade-up">
-      <div class="clinician-photo">
-        <div class="clinician-photo-placeholder" style="background:linear-gradient(135deg,var(--charcoal) 0%,var(--terracotta) 100%);">
-          <span class="clinician-name-overlay">Eugene</span>
-        </div>
+    <div class="founder-right fade-up">
+      <p class="founder-type">Founder &amp; Consultant Psychologist</p>
+      <h2 class="founder-name">Amelia<br><em>Sear</em></h2>
+      <p class="founder-title">DClinPsych &nbsp;·&nbsp; CDA Licensed, UAE &nbsp;·&nbsp; HCPC Registered, UK &nbsp;·&nbsp; Chartered Member, BPS</p>
+      <blockquote class="founder-pull">"I built Psynara because I know what it means to find something that genuinely changes you. That is what I want to offer to others."</blockquote>
+      <div class="founder-body">
+        <p>Amelia Sear is a Consultant Psychologist and the founder of Psynara, holding clinical licences in both the UAE and the United Kingdom. Her work is defined by a rare combination: the analytical precision of evidence-based psychology and the compassionate presence of someone who has experienced the transformative power of this kind of immersive retreat work herself.</p>
+        <p>Amelia's journey into integrative healing began not in theory but through lived experience. That experience led her to bring together clinical excellence with somatic and holistic practice, and to create Psynara as a space where others could access the same depth of transformation. She does not offer programmes. She offers a relationship, and a process built entirely around the person in front of her.</p>
       </div>
-      <div class="clinician-content" style="background:var(--white);">
-        <p class="clinician-type">Consultant Psychotherapist</p>
-        <h2 class="clinician-name">Eugene<br><em>Traboulsi</em></h2>
-        <p class="clinician-title">Consultant Clinical Social Worker &nbsp;·&nbsp; CDA Licensed, UAE &nbsp;·&nbsp; AASW Registered</p>
-        <blockquote class="clinician-pull">"Healing happens in relationship. My role is to create the conditions where that becomes possible."</blockquote>
-        <div class="clinician-body">
-          <p>Eugene Traboulsi is a Consultant Psychotherapist and Clinical Social Worker with over two decades of experience working with individuals and families across some of the most complex presentations in mental health. His career has spanned government and non-government clinical roles internationally, with deep expertise in dual diagnosis, trauma, relational difficulties, and life transitions.</p>
-          <p>Known for his natural intuition, authenticity, and ability to meet people with both warmth and directness, Eugene creates a therapeutic environment where genuine openness becomes possible. He works within an integrative framework drawing on CBT, Solution Focused Therapy, and Person-Centred approaches, always ensuring that the client is an active participant in shaping the process rather than a passive recipient of it.</p>
-          <p>At Psynara, Eugene brings particular depth to retreats focused on burnout, relational healing, addiction, anxiety, and identity. His experience with expat adjustment and cross-cultural contexts makes him especially well-placed to support clients navigating life in the UAE and beyond.</p>
-        </div>
-        <div class="clinician-specialisms">
-          <p class="specialisms-label">Areas of Focus</p>
-          <div class="specialism-tags">
-            <span class="specialism-tag">Anxiety &amp; Burnout</span>
-            <span class="specialism-tag">Trauma</span>
-            <span class="specialism-tag">Addiction Recovery</span>
-            <span class="specialism-tag">Relational Difficulties</span>
-            <span class="specialism-tag">Grief &amp; Loss</span>
-            <span class="specialism-tag">Identity &amp; Life Transitions</span>
-            <span class="specialism-tag">Depression</span>
-            <span class="specialism-tag">Expat Adjustment</span>
-            <span class="specialism-tag">Emotional Regulation</span>
-          </div>
-        </div>
-        <div class="clinician-creds">
-          <p class="creds-label">Qualifications &amp; Training</p>
-          <div class="cred-pills">
-            <span class="cred-pill">MSc International &amp; Community Development</span>
-            <span class="cred-pill">CDA Licensed, UAE</span>
-            <span class="cred-pill">AASW Registered</span>
-            <span class="cred-pill">CBT — Australian Psychological Society</span>
-            <span class="cred-pill">Graduate Certificate in Substance Misuse</span>
-            <span class="cred-pill">Clinical Supervision Qualified</span>
-          </div>
-        </div>
+      <div class="founder-creds">
+        <span class="founder-cred">CDA Licensed, UAE</span>
+        <span class="founder-cred">HCPC Registered, UK</span>
+        <span class="founder-cred">Chartered Member, BPS</span>
+        <span class="founder-cred">Schema Therapy</span>
+        <span class="founder-cred">EMDR</span>
+        <span class="founder-cred">Somatic Practice</span>
       </div>
     </div>
-
   </div>
+</section>
+
+<!-- ELEGANT LIST: JAMIE + EUGENE -->
+<section class="clinicians">
+
+  <!-- DR JAMIE STEPHENSON -->
+  <div class="clinician-row fade-up">
+    <div class="cl-photo">
+      <img src="photo-jamie.png" alt="Dr Jamie Stephenson">
+    </div>
+    <div class="cl-content">
+      <p class="cl-type">Consultant Psychologist</p>
+      <h2 class="cl-name">Dr Jamie<br><em>Stephenson</em></h2>
+      <p class="cl-title">DCounsPsych &nbsp;·&nbsp; HCPC Registered &nbsp;·&nbsp; CDA Licensed, UAE &nbsp;·&nbsp; Chartered Member, BPS</p>
+      <div class="cl-body">
+        <p>Dr Jamie Stephenson is a Consultant Psychologist with a doctorate in Counselling Psychology and a clinical career spanning NHS specialist services, private practice, corporate wellness, and postgraduate teaching. He brings a rare breadth of experience and a deep commitment to the therapeutic relationship as the foundation of all meaningful change.</p>
+        <p>His approach is warm, collaborative, and integrative — drawing on cognitive behavioural, psychodynamic, and person-centred frameworks alongside specialist training in EMDR and Schema Therapy. At Psynara, Jamie leads retreats focused on trauma, emotional healing, addiction recovery, and complex relational difficulties.</p>
+      </div>
+      <div class="cl-tags">
+        <span class="cl-tag">Trauma &amp; PTSD</span>
+        <span class="cl-tag">Anxiety</span>
+        <span class="cl-tag">Depression</span>
+        <span class="cl-tag">Addiction Recovery</span>
+        <span class="cl-tag">Grief &amp; Loss</span>
+        <span class="cl-tag">Relational Difficulties</span>
+        <span class="cl-tag">Burnout</span>
+      </div>
+      <div class="cl-creds">
+        <span class="cl-cred">Doctorate in Counselling Psychology</span>
+        <span class="cl-cred">HCPC Registered</span>
+        <span class="cl-cred">CDA Licensed, UAE</span>
+        <span class="cl-cred">EMDR Practitioner (Level 3)</span>
+        <span class="cl-cred">Schema Therapy Practitioner</span>
+        <span class="cl-cred">BPS Chartered</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EUGENE TRABOULSI -->
+  <div class="clinician-row fade-up">
+    <div class="cl-photo">
+      <img src="photo-eugene.png" alt="Eugene Traboulsi">
+    </div>
+    <div class="cl-content">
+      <p class="cl-type">Consultant Psychotherapist</p>
+      <h2 class="cl-name">Eugene<br><em>Traboulsi</em></h2>
+      <p class="cl-title">Consultant Clinical Social Worker &nbsp;·&nbsp; CDA Licensed, UAE &nbsp;·&nbsp; AASW Registered</p>
+      <div class="cl-body">
+        <p>Eugene Traboulsi is a Consultant Psychotherapist and Clinical Social Worker with over two decades of experience across complex mental health presentations. Known for his natural intuition, authenticity, and ability to meet people with both warmth and directness, he creates a therapeutic environment where genuine openness becomes possible.</p>
+        <p>Working within an integrative framework of CBT, Solution Focused Therapy, and Person-Centred approaches, Eugene ensures that every client is an active participant in their own process. At Psynara, he brings particular depth to retreats focused on burnout, relational healing, addiction, and identity.</p>
+      </div>
+      <div class="cl-tags">
+        <span class="cl-tag">Anxiety &amp; Burnout</span>
+        <span class="cl-tag">Trauma</span>
+        <span class="cl-tag">Addiction Recovery</span>
+        <span class="cl-tag">Relational Difficulties</span>
+        <span class="cl-tag">Identity &amp; Life Transitions</span>
+        <span class="cl-tag">Expat Adjustment</span>
+        <span class="cl-tag">Emotional Regulation</span>
+      </div>
+      <div class="cl-creds">
+        <span class="cl-cred">MSc International &amp; Community Development</span>
+        <span class="cl-cred">CDA Licensed, UAE</span>
+        <span class="cl-cred">AASW Registered</span>
+        <span class="cl-cred">CBT Certified</span>
+        <span class="cl-cred">Clinical Supervision Qualified</span>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- APPROACH STRIP -->
 <section class="approach-strip">
-  <div class="approach-strip-inner fade-up">
+  <div class="fade-up">
     <p class="section-label" style="color:var(--olive);text-align:center;margin-bottom:1.2rem">How We Work</p>
     <h2 class="approach-heading">Evidence-based, holistically delivered,<br><em>built entirely around you.</em></h2>
-    <p class="approach-body">Every Psynara clinician works within an integrative framework, drawing on the approaches best suited to your needs, your pace, and your goals. No two retreats are alike, because no two people are alike.</p>
-    <a href="methodology.html" class="approach-link">Explore Our Methodology &#8594;</a>
+    <p class="approach-body">Every clinician works within an integrative framework, drawing on the approaches best suited to your needs and goals. No two retreats are alike, because no two people are alike.</p>
+    <a href="methodology.html" class="approach-link">Our Methodology &#8594;</a>
+    <a href="experience.html" class="approach-link">The Experience &#8594;</a>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="team-cta">
   <div class="fade-up">
-    <p class="cta-eyebrow">Begin Your Journey</p>
-    <h2 class="cta-heading">Ready to work with<br><em>our team?</em></h2>
-    <a href="/enquire" class="cta-btn filled">Begin Your Enquiry</a>
-    <a href="retreats.html" class="cta-btn">Explore Retreats</a>
+    <p class="cta-eyebrow">Take the first step</p>
+    <h2 class="cta-heading">Ready to begin your<br><em>Psynara journey?</em></h2>
+    <a href="/enquire" class="cta-btn">Begin Your Enquiry</a>
+    <a href="retreats.html" class="cta-btn outline">Explore Retreats</a>
   </div>
 </section>
 
@@ -295,7 +319,7 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>

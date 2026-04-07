@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+  <!-- Vertical staff -->
+  <line x1="50" y1="4" x2="50" y2="156"/>
+  <!-- Upper circle -->
+  <circle cx="50" cy="55" r="32"/>
+  <!-- Lower circle -->
+  <circle cx="50" cy="105" r="32"/>
+</svg>
