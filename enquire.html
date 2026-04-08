@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Begin Your Enquiry — Psynara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest: #303D35;
+  --olive: #697455;
+  --terracotta: #743D22;
+  --beige: #C6BCAE;
+  --mist: #CBD8D5;
+  --charcoal: #3D3030;
+  --warm-grey: #949997;
+  --black: #272727;
+  --white: #FFFFFF;
+  --cream: #F5F2EE;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--black);
+  overflow-x: hidden;
+  font-weight: 300;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  transition: background 0.4s, backdrop-filter 0.4s;
+  background: rgba(48, 61, 53, 0.92);
+  backdrop-filter: blur(12px);
+}
+.nav-logo img {
+  height: 28px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--beige); }
+.nav-cta {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 0.5px solid rgba(255,255,255,0.5);
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.nav-cta:hover {
+  background: var(--white);
+  color: var(--forest);
+}
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--white);
+}
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--forest);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu-close {
+  position: absolute;
+  top: 1.5rem; right: 2rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.mobile-nav-links {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.mobile-nav-links a {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.mobile-menu-cta {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 0.5px solid rgba(255,255,255,0.5);
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: var(--forest);
+  padding: 10rem 3rem 5rem;
+  text-align: center;
+}
+.page-header-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--beige);
+  margin-bottom: 1.2rem;
+}
+.page-header-title {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.page-header-title em { font-style: italic; }
+.page-header-body {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.65);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── FORM SECTION ── */
+.form-section {
+  padding: 6rem 3rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.form-intro {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.form-intro-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 1rem;
+}
+.form-intro-text {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--forest);
+}
+.form-intro-text em { font-style: italic; }
+
+/* ── THE FORM ── */
+.enquiry-form {
+  display: grid;
+  gap: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--warm-grey);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--black);
+  background: var(--white);
+  border: 0.5px solid var(--beige);
+  padding: 1rem 1.2rem;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--forest);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--beige);
+}
+
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper::after {
+  content: '↓';
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--warm-grey);
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+.select-wrapper select {
+  width: 100%;
+  cursor: pointer;
+}
+.select-wrapper select option { color: var(--black); }
+.select-wrapper select.placeholder-selected { color: var(--beige); }
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 160px;
+  line-height: 1.7;
+}
+
+.form-divider {
+  height: 0.5px;
+  background: var(--beige);
+  opacity: 0.5;
+}
+
+.form-note {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--warm-grey);
+  line-height: 1.7;
+  text-align: center;
+}
+
+.form-submit {
+  text-align: center;
+}
+
+.submit-btn {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--forest);
+  border: none;
+  padding: 1.2rem 3.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.submit-btn:hover { background: var(--charcoal); }
+
+.form-disclaimer {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--warm-grey);
+  text-align: center;
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+
+/* ── SUCCESS STATE ── */
+.success-message {
+  display: none;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+.success-message.visible { display: block; }
+.success-icon {
+  font-family: var(--serif);
+  font-size: 3rem;
+  color: var(--forest);
+  margin-bottom: 1.5rem;
+}
+.success-heading {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 300;
+  color: var(--forest);
+  margin-bottom: 1rem;
+}
+.success-body {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--warm-grey);
+  line-height: 1.9;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+.success-link {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--forest);
+  padding-bottom: 2px;
+}
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+  background: var(--white);
+  padding: 3.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  border-top: 0.5px solid var(--beige);
+}
+.trust-item {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--warm-grey);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.trust-item::before {
+  content: '—';
+  color: var(--beige);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--forest);
+  padding: 4rem 3rem 2rem;
+  color: rgba(255,255,255,0.6);
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.footer-logo img {
+  height: 36px;
+  filter: brightness(0) invert(1);
+  margin-bottom: 0.8rem;
+}
+.footer-tagline {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.4);
+}
+.footer-nav {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-nav a {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--beige); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 0.5px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.3);
+}
+.footer-legal {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-legal a {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: var(--beige); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .page-header { padding: 8rem 1.5rem 4rem; }
+  .form-section { padding: 4rem 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .trust-strip { gap: 1.5rem; }
+  .footer-top { flex-direction: column; }
+  .footer-nav { gap: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="images/psynara-wisdom-knot.png" alt="Psynara">
+  </a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="experience.html">The Experience</a></li>
+    <li><a href="team.html">Our Clinicians</a></li>
+    <li><a href="stories.html">Stories</a></li>
+  </ul>
+  <a href="enquire.html" class="nav-cta">Begin Your Enquiry</a>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose">&#10005;</button>
+  <ul class="mobile-nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="experience.html">The Experience</a></li>
+    <li><a href="methodology.html">Methodology</a></li>
+    <li><a href="team.html">Our Clinicians</a></li>
+    <li><a href="stories.html">Stories</a></li>
+  </ul>
+  <a href="enquire.html" class="mobile-menu-cta">Begin Your Enquiry</a>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <p class="page-header-eyebrow">Your Journey Begins Here</p>
+  <h1 class="page-header-title">Begin Your <em>Enquiry</em></h1>
+  <p class="page-header-body">Every Psynara retreat begins with a conversation. Share a little about yourself and what you are looking for, and we will be in touch within 24 hours.</p>
+</header>
+
+<!-- FORM -->
+<section class="form-section">
+
+  <div class="form-intro">
+    <p class="form-intro-label">Strictly Confidential</p>
+    <p class="form-intro-text">There is no obligation and no pressure.<br>Just a <em>quiet, considered conversation.</em></p>
+  </div>
+
+  <form class="enquiry-form" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="enquiryForm">
+    <input type="hidden" name="form-name" value="enquiry">
+    <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" placeholder="Amelia" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last-name" placeholder="Sear" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="+971 00 000 0000">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="enquiry-type">Type of Enquiry</label>
+      <div class="select-wrapper">
+        <select id="enquiry-type" name="enquiry-type" class="placeholder-selected" required>
+          <option value="" disabled selected>Please select…</option>
+          <option value="General Enquiry">General Enquiry</option>
+          <option value="Retreat Booking">Retreat Booking</option>
+          <option value="Bespoke Retreat">Bespoke / Private Retreat</option>
+          <option value="Corporate">Corporate Wellbeing</option>
+          <option value="Other">Something Else</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="retreat">Retreat of Interest (optional)</label>
+      <div class="select-wrapper">
+        <select id="retreat" name="retreat">
+          <option value="" selected>Not sure yet</option>
+          <option value="Burnout & Nervous System Reset">Burnout &amp; Nervous System Reset</option>
+          <option value="Grief & Loss">Grief &amp; Loss</option>
+          <option value="Relationship Repair">Relationship Repair</option>
+          <option value="Inner Child & Schema Work">Inner Child &amp; Schema Work</option>
+          <option value="Bespoke Private Retreat">Bespoke Private Retreat</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Tell Us a Little About Yourself</label>
+      <textarea id="message" name="message" placeholder="Share whatever feels relevant — what you are carrying, what you are hoping for, or simply that you are curious and would like to know more." required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="how-heard">How Did You Hear About Psynara? (optional)</label>
+      <div class="select-wrapper">
+        <select id="how-heard" name="how-heard">
+          <option value="" selected>Please select…</option>
+          <option value="Word of mouth">Word of mouth</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Google">Google</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="Press / Media">Press / Media</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-divider"></div>
+
+    <p class="form-note">"Every enquiry is read personally by Amelia. You will receive a thoughtful, human response — not an automated reply."</p>
+
+    <div class="form-submit">
+      <button type="submit" class="submit-btn">Send Your Enquiry</button>
+      <p class="form-disclaimer">Strictly confidential &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; Response within 24 hours</p>
+    </div>
+
+  </form>
+
+  <!-- SUCCESS MESSAGE (shown after Netlify redirect) -->
+  <div class="success-message" id="successMessage">
+    <div class="success-icon">✦</div>
+    <h2 class="success-heading">Thank you, your enquiry<br>has been received.</h2>
+    <p class="success-body">Amelia will be in touch personally within 24 hours. In the meantime, feel free to explore our retreats or read stories from past guests.</p>
+    <a href="retreats.html" class="success-link">Explore Retreats</a>
+  </div>
+
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <span class="trust-item">Strictly Confidential</span>
+  <span class="trust-item">No Obligation</span>
+  <span class="trust-item">Response Within 24 Hours</span>
+  <span class="trust-item">Led by Psychologists</span>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      <img src="images/psynara-wisdom-knot.png" alt="Psynara">
+      <p class="footer-tagline">Where the mind meets the whole.</p>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="about.html">About</a></li>
+      <li><a href="retreats.html">Retreats</a></li>
+      <li><a href="experience.html">The Experience</a></li>
+      <li><a href="team.html">Our Clinicians</a></li>
+      <li><a href="stories.html">Stories</a></li>
+      <li><a href="enquire.html">Enquire</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2025 Psynara. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileMenuClose');
+if (hamburger) {
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+}
+
+// Remove placeholder styling once a real option is selected
+const selects = document.querySelectorAll('select');
+selects.forEach(sel => {
+  sel.addEventListener('change', () => {
+    sel.classList.remove('placeholder-selected');
+  });
+});
+
+// Show success message if redirected back with ?success
+if (window.location.search.includes('success')) {
+  document.getElementById('enquiryForm').style.display = 'none';
+  document.querySelector('.form-intro').style.display = 'none';
+  document.getElementById('successMessage').classList.add('visible');
+}
+</script>
+
+</body>
+</html>
